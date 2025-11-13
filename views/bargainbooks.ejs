@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>About <%=shopData.shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=shopData.shopName%> Bargains</h1>
+    <h2>Books under £20:</h2>
+    <% if (bargainBooks.length > 0){ %>
+    <ul>
+        <% bargainBooks.forEach(function(book) { %>
+        <li><%= book.name %> - £<%= parseFloat(book.price).toFixed(2) %></li>
+    <% }); %>
+    </ul>
+<%} else { %> <p>No bargain books available </p>}
+<% } %>
+  </body>
+</html>

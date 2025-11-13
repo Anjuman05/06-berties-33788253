@@ -38,7 +38,23 @@ router.post('/bookadded', function (req, res, next) {
         else
             res.send(' This book is added to database, name: '+ req.body.name + ' price '+ req.body.price)
     })
-}) 
+})
+
+router.get('/bargainbooks', function(req,res, next){
+    let sqlquery = "SELECT * FROM books WHERE price<20 ORDER BY price ASC"
+    db.query(sqlquery, (err, result) => {
+        if(err) {
+            next(err)
+        }
+
+        res.render("bargainbooks.ejs",{
+        bargainBooks:result, message:result.length === 0? "No bargain books found" : ""
+        })
+    })
+})
+
+
+
 
 // Export the router object so index.js can access it
 module.exports = router
