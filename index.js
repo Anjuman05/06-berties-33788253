@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Import express and ejs
 var express = require ('express')
 var ejs = require('ejs')
@@ -23,9 +25,9 @@ app.locals.shopData = {shopName: "Bertie's Books"}
 //Define the database connection pool
 const db = mysql.createPool({
     host: 'localhost',
-    user: 'berties_books_app',
-    password: 'qwertyuiop',
-    database: 'berties_books',
+    user: process.env.BB_USER,        // FROM .env
+    password: process.env.BB_PASSWORD, // FROM .env
+    database: process.env.BB_DATABASE, // FROM .env
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
