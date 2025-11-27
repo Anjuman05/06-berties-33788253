@@ -43,6 +43,15 @@ router.get('/list',redirectLogin, function(req, res, next) {
         });
 });
 
+router.get('/logout', redirectLogin, (req,res) => {
+        req.session.destroy(err => {
+        if (err) {
+          return res.redirect('./')
+        }
+        res.send('you are now logged out. <a href='+'./'+'>Home</a>');
+        })
+    })
+
 router.get('/login', function (req, res, next){
     res.render('login.ejs')
 });
