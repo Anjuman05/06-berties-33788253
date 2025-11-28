@@ -20,8 +20,8 @@ router.get('/register', function (req, res, next) {
 
 router.post('/registered', 
             [check('email').isEmail(), 
-            check('username').isLength({ min: 5, max: 20}),
-            check('password').isLength({min:8}),
+            check('username').isLength({ min: 4, max: 20}),
+            check('password').isLength({min:4}),
             check('first').notEmpty().withMessage('First Name is required'),
             check('last').notEmpty().withMessage("Last Name is required")], 
 
