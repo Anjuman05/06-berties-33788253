@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Weather</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1>Check the Weather</h1>
+    <form method="POST" action="/weather/now">
+        <p>City: <input id="city" type="text" name="city" /></p>
+        <input type="submit" value="Get Weather" />
+      </form>
+      <% if (weather) { %>
+        <%=weather%>
+      <%} %>
+  </body>
+</html>

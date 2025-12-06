@@ -2,6 +2,7 @@ require('dotenv').config();
 
 // Import express and ejs
 var express = require ('express')
+const request = require("request")
 var ejs = require('ejs')
 const path = require('path')
 var mysql = require('mysql2');
