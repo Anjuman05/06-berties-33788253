@@ -17,7 +17,7 @@ router.get('/books', function (req, res, next) {
     }
 
     // Execute the sql query
-    db.query(sqlquery, [search] (err, result) => {
+    db.query(sqlquery, [search], (err, result) => {
         // Return results as a JSON object
         if (err) {
             res.json(err)
