@@ -3,7 +3,7 @@ const express = require("express")
 const request = require("request")
 const router = express.Router();
 
-router.get("/weather/now", (req,res) => {
+router.get("/weather", (req,res) => {
     res.render("weather.ejs", {
         weather:null, 
         error: null})
@@ -21,9 +21,16 @@ router.post("/weather/now", (req, res, next) => {
           } else {
             // res.send(body)
             var weather = JSON.parse(body)
-            var wmsg = `It is ${weather.main.temp}*C in ${weather.name}. <br>` +
-                `The humidity now is ${weather.main.humidity}` 
-            res.send (wmsg);
+            var wmsg = `It is ${weather.main.temp}*C in ${weather.name}. <br> 
+                Humidity: ${weather.main.humidity}% <br> 
+                Feels Like: ${weather.main.feels_like}*C <br> 
+                Wind Speed: ${weather.wind.speed}`
+            // res.send (wmsg);
+            res.render("weatherresult.ejs", {
+                weather:wmsg,
+                error: null,
+                city: weather.name
+            })
           } 
         })
 })
