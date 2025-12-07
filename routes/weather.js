@@ -18,14 +18,14 @@ router.post("/weather/now", (req, res, next) => {
         request(url, function (err, response, body) {
           if(err){
             next(err)
-          } else {
-            // res.send(body)
-            var weather = JSON.parse(body)
+          } 
+          var weather = JSON.parse(body)
+          if (weather && weather.main) {
             var wmsg = `It is ${weather.main.temp}*C in ${weather.name}. <br> 
                 Humidity: ${weather.main.humidity}% <br> 
                 Feels Like: ${weather.main.feels_like}*C <br> 
                 Wind Speed: ${weather.wind.speed}`
-            // res.send (wmsg);
+           
             res.render("weatherresult.ejs", {
                 weather:wmsg,
                 error: null,
